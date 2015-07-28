@@ -18,7 +18,11 @@ class TeamsController extends Controller
     public function index()
     {
         $teams = Team::all();
-        return $teams;
+
+        // To protect json vulnerability, prefix the response
+        // with a special string, Angular will automatically
+        // strip out it.
+        return ")]}',\n" . json_encode($teams);
     }
 
     /**

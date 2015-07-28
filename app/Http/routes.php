@@ -15,17 +15,4 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/hello', function() {
-    return 'hello world';
-});
-
-// Route::get('user/{id?}', function ($id = null) {
-//     return 'User '.$id;
-// });
-
-Route::get('user/{name}', function($name) {
-    return $name;
-})
-->where('name', '[A-Za-z]+');
-
 Route::resource('api/teams', 'TeamsController');

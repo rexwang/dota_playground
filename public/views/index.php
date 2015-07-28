@@ -35,11 +35,13 @@
             }
         </style>
     </head>
-    <body>
+    <body ng-controller="myCtrl">
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
-                <test></test>
+                <div ng-repeat="item in items">
+                  {{ item.name }}
+                </div>
             </div>
         </div>
 
