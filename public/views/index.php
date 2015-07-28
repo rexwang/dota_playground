@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="DotaPlayground">
     <head>
         <title>Laravel</title>
 
@@ -39,6 +39,7 @@
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
+                <test></test>
             </div>
         </div>
 
