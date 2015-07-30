@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="DotaPlayground">
+<html>
     <head>
         <title>Laravel</title>
 
@@ -35,17 +35,13 @@
             }
         </style>
     </head>
-    <body ng-controller="myCtrl">
+    <body>
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
-                <div ng-repeat="item in items">
-                  {{ item.name }}
-                </div>
             </div>
         </div>
 
-        <script src="bower_components/angularjs/angular.min.js"></script>
-        <script src="js/app.js"></script>
+        <script src="js/all.js"></script>
     </body>
 </html>

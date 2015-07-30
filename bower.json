@@ -1,5 +1,5 @@
 {
-  "name": "public",
+  "name": "dota_playground",
   "version": "0.0.0",
   "license": "MIT",
   "ignore": [
@@ -9,7 +9,9 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
-    "angularjs": "~1.4.3"
+  "dependencies": {
+    "bootstrap": "~3.3.2",
+    "bootstrap-select": "~1.6.4",
+    "font-awesome": "~4.3.0"
   }
 }

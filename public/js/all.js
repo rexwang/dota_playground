@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('DotaPlayground', []);
 
 app.controller('myCtrl', function($scope, $http) {
@@ -5,3 +7,11 @@ app.controller('myCtrl', function($scope, $http) {
     $scope.items = response.data;
   });
 }); 
+
+'use strict';
+
+(function() {
+  console.log('this is a module');
+}());
+
+//# sourceMappingURL=all.js.map
