@@ -32,7 +32,9 @@ elixir(function(mix) {
     .scripts([
        'jquery/dist/jquery.min.js',
        'bootstrap/dist/js/bootstrap.min.js',
-       'bootstrap-select/dist/js/bootstrap-select.min.js'
+       'bootstrap-select/dist/js/bootstrap-select.min.js',
+       'angular/angular.min.js',
+       'ui-router/release/angular-ui-router.min.js'
     ], 'public/js/vendor.js', bowerDir)
 
     // Combine all the app script files and save it
@@ -42,5 +44,7 @@ elixir(function(mix) {
        'test.js'
     ])
 
-    .copy(bowerDir + 'font-awesome/fonts', 'public/fonts');
+    .copy(bowerDir + 'font-awesome/fonts', 'public/fonts')
+
+    .phpUnit();
 });
