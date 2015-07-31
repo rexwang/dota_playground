@@ -16,3 +16,8 @@ Route::get('/', function () {
 });
 
 Route::resource('api/teams', 'TeamsController');
+
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
