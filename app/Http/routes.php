@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('home', function () {
+    return view('home');
+});
+
 Route::resource('api/teams', 'TeamsController');
 
 Route::controllers([

@@ -8734,16 +8734,5 @@ button.close {
   height: 100% !important;
   opacity: 0;
 }
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  font-weight: 100;
-  font-family: 'Lato';
-}
 
 /*# sourceMappingURL=app.css.map */
