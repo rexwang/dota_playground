@@ -33,7 +33,7 @@
                             <label>
                                 <input name="remember" type="checkbox" value="Remember Me">Remember Me
                             </label>
-                            <a class="text-info pull-right" href="register">Not register yet? click here.</a>
+                            <a class="text-info pull-right" href="register">Register</a>
                         </div>
                         <input type="submit" class="btn btn-lg btn-success btn-block" value="Login">
                     </fieldset>

@@ -14,14 +14,14 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <link href="../css/theme.css" rel="stylesheet" type="text/css">
-        <link href="../css/app.css" rel="stylesheet" type="text/css">
+        <link href="css/theme.css" rel="stylesheet" type="text/css">
+        <link href="css/app.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="container">
             @yield('content')
         </div>
-        <script src="../js/vendor.js"></script>
-        <script src="../js/theme.js"></script>
+        <script src="js/vendor.js"></script>
+        <script src="js/theme.js"></script>
     </body>
 </html>

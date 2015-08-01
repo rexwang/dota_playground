@@ -30,12 +30,12 @@ elixir(function(mix) {
     .styles([
         "metisMenu/dist/metisMenu.min.css",
         "startbootstrap-sb-admin-2/dist/css/sb-admin-2.css"
-    ], 'public/auth/css/theme.css', bowerDir)
+    ], 'public/css/theme.css', bowerDir)
 
     .scripts([
        'metisMenu/dist/metisMenu.min.js',
        'startbootstrap-sb-admin-2/dist/js/sb-admin-2.js',
-    ], 'public/auth/js/theme.js', bowerDir)
+    ], 'public/js/theme.js', bowerDir)
 
     // Combine all the script files in vendor and save it
     // to public/js/vendor.js

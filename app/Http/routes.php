@@ -12,16 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+  return view('index');
 });
 
-Route::get('home', function () {
-    return view('home');
-});
+Route::get('home', ['middleware' => 'auth', function () {
+  return view('app/home');
+}]);
 
 Route::resource('api/teams', 'TeamsController');
 
 Route::controllers([
-    'auth' => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController',
+  'auth' => 'Auth\AuthController',
+  'password' => 'Auth\PasswordController',
 ]);
