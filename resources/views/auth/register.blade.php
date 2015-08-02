@@ -36,6 +36,9 @@
                         <input type="submit" class="btn btn-lg btn-success btn-block" value="Register">
                     </fieldset>
                 </form>
+                <div class="text-center">
+                  <a class="text-info" href="login">Already Registered? Login Here.</a>
+                </div>
             </div>
         </div>
     </div>

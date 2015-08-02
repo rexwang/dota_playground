@@ -15,8 +15,7 @@ var bowerDir = './resources/assets/vendor/';
 
 var lessPaths = [
   bowerDir + 'bootstrap/less',
-  bowerDir + 'font-awesome/less',
-  bowerDir + 'bootstrap-select/less'
+  bowerDir + 'font-awesome/less'
 ];
 
 elixir(function(mix) {
@@ -50,9 +49,8 @@ elixir(function(mix) {
     // Combine all the app script files and save it
     // to public/js/all.js
     .scripts([
-       'app.js',
-       'test.js'
-    ])
+       'app.js'
+    ], 'public/js/app.js')
 
     .copy(bowerDir + 'font-awesome/fonts', 'public/fonts')
 
