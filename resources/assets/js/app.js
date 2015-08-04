@@ -15,6 +15,10 @@
       .state('dashboard', {
         url: '/dashboard',
         templateUrl: 'partials/dashboard.html'
+      })
+      .state('users', {
+        url: '/users',
+        templateUrl: 'partials/users.html'
       });
   });
 
