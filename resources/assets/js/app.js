@@ -2,10 +2,16 @@
 
   'use strict';
 
-  var app = angular.module('DotaPlayground', ['ui.router'], function($interpolateProvider) {
-    $interpolateProvider.startSymbol('<%');
-    $interpolateProvider.endSymbol('%>');
-  });
+  var app = angular.module(
+    'DotaPlayground',
+    [
+      'ui.router'
+    ],
+    function($interpolateProvider) {
+      $interpolateProvider.startSymbol('<%');
+      $interpolateProvider.endSymbol('%>');
+    }
+  );
 
   app.config(function($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /dashboard
@@ -14,17 +20,17 @@
     $stateProvider
       .state('dashboard', {
         url: '/dashboard',
-        templateUrl: 'partials/dashboard.html'
+        templateUrl: 'templates/partials/dashboard.html'
       })
-      .state('users', {
-        url: '/users',
-        templateUrl: 'partials/users.html'
+      .state('teams', {
+        url: '/teams',
+        templateUrl: 'templates/partials/teams.html'
       });
   });
 
   app.directive('test', ['$http', function($http) {
     return {
-      templateUrl: 'templates/test.tpl.html',
+      templateUrl: 'templates/directives/test.tpl.html',
       link: function(scope) {
         $http.get('api/teams').then(function(response) {
           scope.items = response.data;

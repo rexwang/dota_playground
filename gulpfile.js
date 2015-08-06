@@ -1,4 +1,6 @@
+var gulp = require('gulp');
 var elixir = require('laravel-elixir');
+var templateCache = require('gulp-angular-templatecache');
 
 /*
  |--------------------------------------------------------------------------
@@ -12,11 +14,19 @@ var elixir = require('laravel-elixir');
  */
 
 var bowerDir = './resources/assets/vendor/';
+var templatesDir = './resources/views/templates/**/*.html';
 
 var lessPaths = [
   bowerDir + 'bootstrap/less',
   bowerDir + 'font-awesome/less'
 ];
+
+gulp.task('template', function () {
+  return gulp.src(templatesDir)
+    .pipe(templateCache())
+    .pipe(gulp.dest('public/js'));
+});
+
 
 elixir(function(mix) {
   mix
@@ -27,13 +37,17 @@ elixir(function(mix) {
     .less('app.less', 'public/css', { paths: lessPaths })
 
     .styles([
-        "metisMenu/dist/metisMenu.min.css",
-        "startbootstrap-sb-admin-2/dist/css/sb-admin-2.css"
+        'metisMenu/dist/metisMenu.min.css',
+        'startbootstrap-sb-admin-2/dist/css/sb-admin-2.css',
+        'datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css',
+        'datatables-responsive/css/dataTables.responsive.css'
     ], 'public/css/theme.css', bowerDir)
 
     .scripts([
        'metisMenu/dist/metisMenu.min.js',
        'startbootstrap-sb-admin-2/dist/js/sb-admin-2.js',
+       'datatables/media/js/jquery.dataTables.min.js',
+       'datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js'
     ], 'public/js/theme.js', bowerDir)
 
     // Combine all the script files in vendor and save it
@@ -53,6 +67,8 @@ elixir(function(mix) {
     ], 'public/js/app.js')
 
     .copy(bowerDir + 'font-awesome/fonts', 'public/fonts')
+
+    .task('template', templatesDir)
 
     .phpUnit();
 });
