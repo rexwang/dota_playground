@@ -8499,5 +8499,8 @@ button.close {
 .btn {
   padding: 9px 12px;
 }
+#addATeam textarea {
+  resize: vertical;
+}
 
 /*# sourceMappingURL=app.css.map */

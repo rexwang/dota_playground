@@ -13,6 +13,7 @@
     "bootstrap": "~3.3.2",
     "bootstrap-select": "~1.6.4",
     "font-awesome": "~4.3.0",
-    "ui-router": "~0.2.15"
+    "ui-router": "~0.2.15",
+    "angular-resource": "~1.4.3"
   }
 }

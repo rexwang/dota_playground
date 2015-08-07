@@ -1,19 +1,18 @@
-(function() {
+'use strict';
 
-  'use strict';
+angular.module(
+  'DotaPlayground',
+  [
+    'ui.router',
+    'ngResource'
+  ],
+  function($interpolateProvider) {
+    $interpolateProvider.startSymbol('<%');
+    $interpolateProvider.endSymbol('%>');
+  }
+)
 
-  var app = angular.module(
-    'DotaPlayground',
-    [
-      'ui.router'
-    ],
-    function($interpolateProvider) {
-      $interpolateProvider.startSymbol('<%');
-      $interpolateProvider.endSymbol('%>');
-    }
-  );
-
-  app.config(function($stateProvider, $urlRouterProvider) {
+  .config(function($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /dashboard
     $urlRouterProvider.otherwise('/dashboard');
 
@@ -24,19 +23,17 @@
       })
       .state('teams', {
         url: '/teams',
-        templateUrl: 'templates/partials/teams.html'
+        templateUrl: 'templates/partials/teams/teams.html'
       });
-  });
+  })
 
-  app.directive('test', ['$http', function($http) {
+  .directive('test', ['$http', function($http) {
     return {
       templateUrl: 'templates/directives/test.tpl.html',
       link: function(scope) {
-        $http.get('api/teams').then(function(response) {
-          scope.items = response.data;
-        });
+        // $http.get('api/teams').then(function(response) {
+        //   scope.items = response.data;
+        // });
       }
     };
   }]);
-
-}());

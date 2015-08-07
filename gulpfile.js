@@ -57,13 +57,16 @@ elixir(function(mix) {
        'bootstrap/dist/js/bootstrap.min.js',
        'bootstrap-select/dist/js/bootstrap-select.min.js',
        'angular/angular.min.js',
-       'ui-router/release/angular-ui-router.min.js'
+       'ui-router/release/angular-ui-router.min.js',
+       'angular-resource/angular-resource.min.js',
     ], 'public/js/vendor.js', bowerDir)
 
     // Combine all the app script files and save it
     // to public/js/all.js
     .scripts([
-       'app.js'
+       'app.js',
+       'directives/*.js',
+       'services/*.js'
     ], 'public/js/app.js')
 
     .copy(bowerDir + 'font-awesome/fonts', 'public/fonts')
