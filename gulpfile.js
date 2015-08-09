@@ -59,6 +59,8 @@ elixir(function(mix) {
        'angular/angular.min.js',
        'ui-router/release/angular-ui-router.min.js',
        'angular-resource/angular-resource.min.js',
+       'angular-bootstrap/ui-bootstrap.min.js',
+       'angular-bootstrap/ui-bootstrap-tpls.min.js'
     ], 'public/js/vendor.js', bowerDir)
 
     // Combine all the app script files and save it
@@ -70,6 +72,8 @@ elixir(function(mix) {
     ], 'public/js/app.js')
 
     .copy(bowerDir + 'font-awesome/fonts', 'public/fonts')
+
+    .copy(bowerDir + 'bootstrap/fonts', 'public/fonts')
 
     .task('template', templatesDir)
 

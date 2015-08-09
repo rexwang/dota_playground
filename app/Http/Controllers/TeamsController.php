@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateTeamRequest;
 use App\Team;
 
 class TeamsController extends Controller
@@ -40,9 +40,11 @@ class TeamsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateTeamRequest $request)
     {
-        $team = Team::create(Request::all());
+        // The request params are already been validated
+        // by CreateTeamRequest
+        $team = Team::create($request->all());
         return $team;
     }
 

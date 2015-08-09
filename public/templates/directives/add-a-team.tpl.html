@@ -1,13 +1,64 @@
-<form id="addATeam" role="form" novalidate>
+<div class="alert alert-{{ errors ? 'danger' : 'success' }} alert-dismissable" ng-show="showNotification">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <ul ng-show="errors" ng-repeat="(key, value) in errors">
+        <li ng-repeat="error in value">{{error}}</li>
+    </ul>
+    <span ng-show="!errors">Team {{team.name}} has been added.</span>
+</div>
+
+<form id="addATeam" name="add_a_team_form" novalidate>
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
                 <label>Name</label>
-                <input class="form-control" data-ng-model="team.name" placeholder="Enter name">
+                <input class="form-control" name="name" data-ng-model="team.name" placeholder="Enter name" required>
+                <p class="help-block"
+                   data-ng-show="add_a_team_form.name.$dirty && add_a_team_form.name.$invalid">
+                   <small class="text-danger" data-ng-show="add_a_team_form.name.$error.required">
+                       Team name is required.
+                   </small>
+                </p>
             </div>
             <div class="form-group">
+                <label>Created on</label>
+                <p class="input-group">
+                    <input type="text" name="created_on" class="form-control" datepicker-popup="{{format}}" ng-model="team.created_on" is-open="opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="Select a date" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+            <div class="form-group">
+                <label>Country</label>
+                <input class="form-control" name="country" data-ng-model="team.country" placeholder="Enter country" required>
+                <p class="help-block"
+                   data-ng-show="add_a_team_form.country.$dirty && add_a_team_form.country.$invalid">
+                   <small class="text-danger" data-ng-show="add_a_team_form.country.$error.required">
+                       Team country is required.
+                   </small>
+                </p>
+            </div>
+        </div>
+        <!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+            <div class="form-group">
                 <label>Region</label>
-                <input class="form-control" data-ng-model="team.region" placeholder="Enter region">
+                <select class="form-control" name="region" ng-model="team.region" required>
+                    <option ng-repeat="region in regions">{{ region }}</option>
+                </select>
+                <p class="help-block"
+                   data-ng-show="add_a_team_form.region.$dirty && add_a_team_form.region.$invalid">
+                   <small class="text-danger" data-ng-show="add_a_team_form.region.$error.required">
+                       Team region is required.
+                   </small>
+                </p>
+            </div>
+            <div class="form-group">
+                <label>Active</label>
+                <div class="form-control" ng-init="team.active=1">
+                    <input type="radio" name="active" ng-model="team.active" value="1"> Yes&nbsp;&nbsp;
+                    <input type="radio" name="active" ng-model="team.active" value="0"> No
+                </div>
             </div>
             <div class="form-group">
                 <label>Overview</label>
@@ -15,28 +66,9 @@
             </div>
         </div>
         <!-- /.col-lg-6 -->
-        <div class="col-lg-6">
-            <div class="form-group">
-                <label>Country</label>
-                <input class="form-control" data-ng-model="team.country" placeholder="Enter country">
-            </div>
-            <div class="form-group">
-                <label>Created on</label>
-                <input class="form-control" data-ng-model="team.created_on" placeholder="Enter created date">
-            </div>
-            <div class="form-group">
-                <label>Active</label>
-                <div class="form-control">
-                    <input type="radio" ng-model="team.active" value="1"> Yes&nbsp;&nbsp;
-                    <input type="radio" ng-model="team.active" value="0"> No
-                </div>
-            </div>
-            {{teams}}
-        </div>
-        <!-- /.col-lg-6 -->
     </div>
     <div class="row">
-        <button type="submit" class="btn btn-default" data-ng-click="addATeam(team)" style="margin-left:15px;">Submit</button>
+        <button type="submit" ng-click="addATeam(team)" data-ng-disabled="add_a_team_form.$invalid" class="btn btn-default" style="margin-left:15px;">Submit</button>
     </div>
 </form>
 <!-- /.form -->
