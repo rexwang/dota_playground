@@ -6,16 +6,21 @@ angular.module('DotaPlayground')
     '$timeout',
     function(teamFactory, regionFactory, $timeout) {
       return {
-        scope: {},
+        scope: {
+          team: '=',
+          update: '='
+        },
         templateUrl: 'templates/directives/add-a-team.tpl.html',
         link: function(scope) {
+          // Datepicker setup
           scope.dateOptions = {
             formatYear: 'yy',
             startingDay: 1
           };
           scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
           scope.format = scope.formats[0];
-          scope.regions = regionFactory;
+
+          scope.regions = regionFactory.getRegions();
 
           scope.addATeam = function(team) {
             teamFactory.teamAPI().save(team).$promise
@@ -30,7 +35,10 @@ angular.module('DotaPlayground')
                   $timeout(function() {
                     scope.showNotification = false;
                   }, 3000);
+
+                  // Updates the ui to show newly added team.
                   teamFactory.teams.push(team);
+
                   // Clear the form.
                   scope.add_a_team_form.$setPristine();
                   scope.team = null;
@@ -39,6 +47,10 @@ angular.module('DotaPlayground')
               .finally(function() {
                 scope.showNotification = true;
               });
+          };
+
+          scope.updateTeam = function(team) {
+            console.log(team);
           };
 
           scope.open = function($event) {

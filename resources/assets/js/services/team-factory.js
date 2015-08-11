@@ -4,7 +4,10 @@ angular.module('DotaPlayground')
     // return $resource('api/teams');
     return {
       teamAPI: function() {
-        return $resource('api/teams');
+        var teams = $resource('api/teams/:id', {id: '@id'}, {
+          'update': { method:'PUT' }
+        });
+        return teams;
       },
       teams: [],
       initialLoad: true

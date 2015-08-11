@@ -17,7 +17,7 @@ class TeamsController extends Controller
      */
     public function index()
     {
-        $teams = Team::all();
+        $teams = Team::orderBy('name', 'ASC')->get();
 
         // To protect json vulnerability, prefix the response
         // with a special string, Angular will automatically
@@ -56,7 +56,8 @@ class TeamsController extends Controller
      */
     public function show($id)
     {
-        //
+        $team = Team::find($id);
+        return $team;
     }
 
     /**
@@ -79,7 +80,14 @@ class TeamsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $affectedRows = Team::find($id)->update(['name' => $request->get('name')]);
+        $affectedRows = Team::find($id)->update($request->all());
+
+        if ($affectedRows) {
+            return 'update success';
+        } else {
+            return 'update failed';
+        }
     }
 
     /**
@@ -90,6 +98,11 @@ class TeamsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleteTeam = Team::find($id)->delete();
+        if ($deleteTeam) {
+            return ['id' => $id];
+        } else {
+            return 0;
+        }
     }
 }
