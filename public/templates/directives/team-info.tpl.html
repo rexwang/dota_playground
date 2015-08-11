@@ -10,7 +10,7 @@
                 <td ng-repeat="region in regions">
                     <ul>
                         <li ng-repeat="team in teams | filter: {'region': region}">
-                            <a href="#" ng-click="open('lg', team, $index)"><% team.name %></a>
+                            <a href="#" ng-click="open('lg', team)"><% team.name %></a>
                         </li>
                     </ul>
                 </td>

@@ -37,7 +37,7 @@ angular.module('DotaPlayground')
                   }, 3000);
 
                   // Updates the ui to show newly added team.
-                  teamFactory.teams.push(team);
+                  teamFactory.teams.push(response);
 
                   // Clear the form.
                   scope.add_a_team_form.$setPristine();

@@ -17,7 +17,7 @@ angular.module('DotaPlayground')
           .then(function(response) {
             if (response) {
               angular.forEach(teamFactory.teams, function(team, index) {
-                if (team.id === response.id) {
+                if (team.id == response.id) {
                   teamFactory.teams.splice(index, 1);
                 }
               });
@@ -76,17 +76,15 @@ angular.module('DotaPlayground')
               $log.info('teamModified = '+ teamModified.name + ' Finished at: ' + new Date());
 
               for (var prop in selectedTeam) {
-                if (selectedTeam.hasOwnProperty(prop) && teamModified.hasOwnProperty(prop)) {
-                  if (selectedTeam[prop] != teamModified[prop]) {
-                    newTeamInfo[prop] = teamModified[prop];
-                  }
+                if (selectedTeam[prop] !== teamModified[prop]) {
+                  newTeamInfo[prop] = teamModified[prop];
                 }
               }
 
               var teamUpdate = teamFactory.teamAPI().update({id: teamModified.id}, newTeamInfo);
               teamUpdate.$promise
                 .catch(function(response) {
-                  if (response.status == 422) {
+                  if (response.status !== 200) {
                     $log.info('Update for ' + teamModified.name + ' failed');
 
                     // Todo: Show the error message to users.
